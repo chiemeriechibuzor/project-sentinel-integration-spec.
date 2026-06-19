@@ -4,6 +4,24 @@
 An enterprise-grade technical specification mapping an event-driven architecture designed to stream real-time operational data to an AI Risk Engine. 
 This project eliminates legacy nightly batch updates, enabling sub-second automated fraud detection across high-volume financial transactions.
 
+
+```mermaid
+graph LR
+    %% Style Definitions
+    classDef core fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px,color:#000;
+    classDef kafka fill:#fff3e0,stroke:#ff9800,stroke-width:2px,color:#000;
+    classDef ai fill:#ede7f6,stroke:#673ab7,stroke-width:2px,color:#000;
+
+    %% Nodes
+    A[Core Application App]:::core
+    B[Kafka Event Stream <br> <i>Topic: payments-v1</i>]:::kafka
+    C[AI Risk Engine <br> <i>Database Layer / RaptorDB</i>]:::ai
+
+    %% Connections
+    A -->|1. Publishes Transaction Event| B
+    B -->|2. Instantly Consumes & Analyzes| C
+
+```
 ---
 
 ## 1. System Architecture & Event-Driven Topology (Kafka)
